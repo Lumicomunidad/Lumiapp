@@ -1,0 +1,1999 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Lumi - Comunicación para todos</title>
+
+  <style>
+
+    :root {
+
+      --yellow: #F3DE91;
+
+      --yellow-dark: #DCC36F;
+
+      --pink: #f5dfe7;
+
+      --blue: #e0edf7;
+
+      --green: #e1efe4;
+
+      --purple: #ece5f5;
+
+      --peach: #f9e8dc;
+
+      --ink: #41414a;
+
+      --muted: #777782;
+
+      --white: #fffefa;
+
+      --border: #eee9df;
+
+    }
+
+
+
+    * { box-sizing: border-box; }
+
+
+
+    body {
+
+      margin: 0;
+
+      min-height: 100vh;
+
+      background: var(--white);
+
+      color: var(--ink);
+
+      font-family: Arial, Helvetica, sans-serif;
+
+    }
+
+
+
+    button, input, textarea { font: inherit; }
+
+    button { cursor: pointer; }
+
+
+
+    button:focus-visible, input:focus-visible, textarea:focus-visible {
+
+      outline: 3px solid #9b83c5;
+
+      outline-offset: 3px;
+
+    }
+
+
+
+    .screen {
+
+      display: none;
+
+      width: 100%;
+
+      max-width: 850px;
+
+      min-height: 100vh;
+
+      margin: auto;
+
+      padding: 28px 22px 45px;
+
+    }
+
+
+
+    .screen.active { display: flex; flex-direction: column; }
+
+    .center { align-items: center; justify-content: center; text-align: center; }
+
+
+
+    .logo {
+
+      display: inline-block;
+
+      color: var(--yellow);
+
+      font-size: 64px;
+
+      font-weight: 700;
+
+      letter-spacing: -4px;
+
+      margin: 0 auto 8px;
+
+      line-height: 1.15;
+
+      white-space: nowrap;
+
+    }
+
+
+
+    h1, h2, h3 { font-weight: 600; }
+
+    h1 { font-size: 27px; margin: 14px 0; }
+
+    h2 { font-size: 22px; margin: 10px 0; }
+
+    p { line-height: 1.55; }
+
+
+
+    .intro {
+
+      max-width: 560px;
+
+      color: var(--muted);
+
+      font-size: 17px;
+
+      margin: 5px auto 24px;
+
+    }
+
+
+
+    .small-note { font-size: 14px; color: var(--muted); }
+
+
+
+    .cube-note {
+
+      max-width: 520px;
+
+      margin: 24px auto 0;
+
+      padding: 15px 18px;
+
+      border-radius: 16px;
+
+      background: #fff8e8;
+
+      color: #987a32;
+
+      text-align: center;
+
+      font-size: 15px;
+
+      line-height: 1.5;
+
+    }
+
+
+
+    .profiles {
+
+      display: grid;
+
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+
+      gap: 13px;
+
+      width: 100%;
+
+      max-width: 620px;
+
+      margin: 10px auto;
+
+    }
+
+
+
+    .profile {
+
+      min-height: 125px;
+
+      padding: 18px 12px;
+
+      border: 2px solid #eee9df;
+
+      border-radius: 18px;
+
+      background: #ffffff;
+
+      color: var(--ink);
+
+      text-align: center;
+
+      transition: background .15s, border-color .15s;
+
+    }
+
+
+
+    .profile.selected {
+
+      background: rgba(243, 222, 145, .16);
+
+      border-color: rgba(220, 195, 111, .42);
+
+      box-shadow: none;
+
+    }
+
+
+
+    .profile .emoji { display: block; font-size: 30px; margin-bottom: 8px; }
+
+    .profile strong { display: block; margin-bottom: 5px; font-size: 16px; }
+
+    .profile span:last-child { font-size: 13px; color: #666; }
+
+
+
+    .pink { background: var(--pink); }
+
+    .blue { background: var(--blue); }
+
+    .green { background: var(--green); }
+
+    .purple { background: var(--purple); }
+
+    .peach { background: var(--peach); }
+
+    .yellow { background: #fbf2d6; }
+
+
+
+    /* Las tarjetas de elección del perfil siempre son blancas. */
+
+    .profiles .profile { background: #ffffff; }
+
+    .profiles .profile.selected {
+
+      background: rgba(243, 222, 145, .16);
+
+      border-color: rgba(220, 195, 111, .42);
+
+    }
+
+
+
+    .panel {
+
+      background: white;
+
+      border: 1px solid var(--border);
+
+      border-radius: 20px;
+
+      padding: 22px;
+
+      width: 100%;
+
+      max-width: 600px;
+
+      margin: 12px auto;
+
+      box-shadow: 0 5px 20px rgba(70, 60, 40, .04);
+
+    }
+
+
+
+    .field {
+
+      display: block;
+
+      width: 100%;
+
+      padding: 14px 15px;
+
+      border: 1px solid #ddd9d0;
+
+      border-radius: 12px;
+
+      margin: 12px 0;
+
+      background: white;
+
+      color: var(--ink);
+
+    }
+
+
+
+    textarea.field { min-height: 120px; resize: vertical; }
+
+
+
+    .choice-list {
+
+      display: grid;
+
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+
+      gap: 10px;
+
+      margin: 16px 0;
+
+      text-align: left;
+
+    }
+
+
+
+    .choice {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 9px;
+
+      padding: 13px;
+
+      border: 1px solid #eee9df;
+
+      border-radius: 12px;
+
+      background: #ffffff;
+
+      font-size: 15px;
+
+      transition: background .15s, border-color .15s;
+
+    }
+
+
+
+    .choice:has(input:checked) {
+
+      background: rgba(243, 222, 145, .16);
+
+      border-color: rgba(220, 195, 111, .38);
+
+    }
+
+
+
+    .choice input { width: 18px; height: 18px; accent-color: #d8c06e; }
+
+
+
+    .primary, .secondary, .danger {
+
+      display: inline-block;
+
+      border: 0;
+
+      border-radius: 14px;
+
+      padding: 14px 23px;
+
+      margin: 8px 4px;
+
+      font-weight: 600;
+
+      min-height: 48px;
+
+    }
+
+
+
+    .primary { background: var(--yellow); color: #4c4228; }
+
+    .secondary { background: #f1eff0; color: var(--ink); }
+
+    .danger { background: #f6e1e1; color: #793c3c; }
+
+    .primary:hover, .secondary:hover, .danger:hover { filter: brightness(.97); }
+
+
+
+    .topbar {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 12px;
+
+      margin-bottom: 20px;
+
+    }
+
+
+
+    .topbar .logo { font-size: 38px; margin: 0; color: var(--yellow); }
+
+
+
+    .welcome {
+
+      padding: 20px;
+
+      border-radius: 18px;
+
+      background: #fff8e8;
+
+      margin-bottom: 20px;
+
+    }
+
+
+
+    .apps {
+
+      display: grid;
+
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+
+      gap: 14px;
+
+    }
+
+
+
+    .app {
+
+      min-height: 145px;
+
+      border: 2px solid transparent;
+
+      border-radius: 18px;
+
+      padding: 19px 12px;
+
+      color: var(--ink);
+
+      text-align: center;
+
+    }
+
+
+
+    .app:hover { border-color: #d9c77f; }
+
+    .app .emoji { display: block; font-size: 34px; margin-bottom: 12px; }
+
+    .app strong { display: block; font-size: 16px; }
+
+    .app small { display: block; margin-top: 6px; color: #696974; line-height: 1.4; }
+
+
+
+    .status {
+
+      border-radius: 12px;
+
+      padding: 13px;
+
+      background: #f6f3eb;
+
+      font-size: 14px;
+
+      line-height: 1.5;
+
+      margin: 12px 0;
+
+    }
+
+
+
+    .status.good { background: #e8f4e9; }
+
+    .status.warning { background: #fff4df; }
+
+    .app-detail { max-width: 650px; margin: auto; }
+
+    .app-detail .big-emoji { font-size: 54px; text-align: center; margin: 15px; }
+
+
+
+    .message-output {
+
+      padding: 15px;
+
+      min-height: 50px;
+
+      border-radius: 12px;
+
+      background: #f5f2eb;
+
+      margin: 12px 0;
+
+      overflow-wrap: anywhere;
+
+    }
+
+
+
+    .hidden { display: none !important; }
+
+    .footer { margin-top: auto; padding-top: 25px; text-align: center; color: #96929a; font-size: 12px; }
+
+
+
+    @media (max-width: 480px) {
+
+      .screen { padding: 20px 15px 35px; }
+
+      .logo { font-size: 55px; }
+
+      .profiles, .apps { gap: 10px; }
+
+      .profile { min-height: 118px; }
+
+      .choice-list { grid-template-columns: 1fr; }
+
+      h1 { font-size: 24px; }
+
+    }
+
+
+    /* Identidad visual Lumi: amarillo pastel, blanco y negro */
+    :root {
+      --yellow: #F5DF91;
+      --yellow-dark: #D9BF68;
+      --ink: #202020;
+      --muted: #555555;
+      --white: #FFFFFF;
+      --border: #E9E5D9;
+    }
+    body {
+      background: #FFFFFF;
+      color: #202020;
+      font-family: "Trebuchet MS", "Segoe UI", Arial, sans-serif;
+    }
+    h1, h2, h3 {
+      color: #202020;
+      font-family: Georgia, "Times New Roman", serif;
+      letter-spacing: -0.35px;
+    }
+    .logo {
+      color: #F5DF91 !important;
+      font-family: "Trebuchet MS", "Segoe UI", Arial, sans-serif;
+      font-weight: 800;
+      letter-spacing: -4px;
+      line-height: 1;
+      display: inline-block;
+      white-space: nowrap;
+    }
+    /* La i conserva su palo; arriba lleva una pequeña curva solar, delicada como una virgulilla. */
+    .sun-i {
+      display: inline-block;
+      position: relative;
+      width: .22em;
+      height: .91em;
+      margin: 0;
+      vertical-align: baseline;
+    }
+    .sun-dot {
+      position: absolute;
+      display: block;
+      width: .37em;
+      height: .23em;
+      top: -.035em;
+      left: 50%;
+      transform: translateX(-50%);
+      overflow: visible;
+      fill: none;
+      stroke: #F5DF91;
+      stroke-width: 1.15;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .i-stem {
+      position: absolute;
+      display: block;
+      left: 50%;
+      bottom: .015em;
+      transform: translateX(-50%);
+      width: .075em;
+      height: .68em;
+      border-radius: 99px;
+      background: #F5DF91;
+    }
+    .brand-word { color: #F5DF91; font-weight: 800; }
+    .profile, .choice, .profiles .profile {
+      background: #FFFFFF !important;
+      color: #202020;
+    }
+    .profile.selected, .profiles .profile.selected,
+    .choice:has(input:checked) {
+      background: rgba(245, 223, 145, .13) !important;
+      border-color: rgba(217, 191, 104, .48) !important;
+    }
+    .primary {
+      background: #F5DF91;
+      color: #202020;
+    }
+    .cube-note, .welcome {
+      background: #FFF9E9;
+      color: #292929;
+    }
+    .app, .panel { color: #202020; }
+    .app { border-color: #EEE9DC; }
+    .app:hover { border-color: #D9BF68; }
+    .pink, .blue, .green, .purple, .peach, .yellow { background: #FFFFFF; }
+    .profile:focus-visible, .choice:focus-within {
+      outline: 3px solid #D9BF68;
+      outline-offset: 3px;
+    }
+
+  </style>
+
+</head>
+
+
+
+<body>
+
+  <!-- PANTALLA 1: BIENVENIDA Y ELECCIÓN DEL MODO -->
+
+  <section id="profileScreen" class="screen active center">
+
+    <div class="logo" aria-label="Lumi">Lum<span class="sun-i" aria-hidden="true"><svg class="sun-dot" viewBox="0 0 28 16" aria-hidden="true"><path d="M5 12.5 Q14 1.5 23 12.5"/><path d="M14 1.2v2.2M4.1 5.1l1.7 1.4M23.9 5.1l-1.7 1.4"/></svg><span class="i-stem"></span></span></div>
+
+
+
+    <h1>Hola, soy <span class="brand-word">Lumi</span></h1>
+
+    <p class="intro">
+
+      Tu espacio de comunicación accesible.
+
+      Lumi puede guiarte hablando. Puedes responder con tu voz o elegir las opciones con el tacto.
+
+    </p>
+
+    <div class="panel" style="margin-bottom:18px">
+      <button class="primary" id="startLumiButton" onclick="startLumiVoice()">Activar micrófono y comenzar por voz</button>
+      <p id="startupStatus" class="small-note" aria-live="polite">Para reconocer tu voz, debes autorizar el micrófono en el navegador.</p>
+    </div>
+
+
+
+    <div class="profiles">
+
+      <button class="profile pink" onclick="selectProfile('ciego', this)">
+
+        <span class="emoji">🔊</span>
+
+        <strong>CIEGO</strong>
+
+        <span>Modo principalmente por audio</span>
+
+      </button>
+
+
+
+      <button class="profile blue" onclick="selectProfile('mudo', this)">
+
+        <span class="emoji">✍️</span>
+
+        <strong>MUDO</strong>
+
+        <span>Modo visual y escrito</span>
+
+      </button>
+
+
+
+      <button class="profile green" onclick="selectProfile('sordo', this)">
+
+        <span class="emoji">👁️</span>
+
+        <strong>SORDO</strong>
+
+        <span>Modo visual y escrito</span>
+
+      </button>
+
+
+
+      <button class="profile purple" onclick="selectProfile('general', this)">
+
+        <span class="emoji">🌈</span>
+
+        <strong>NINGUNA DE ELLAS</strong>
+
+        <span>Modo general</span>
+
+      </button>
+
+    </div>
+
+
+
+    <div class="cube-note">
+
+      Próximamente LumiCube para más modos de accesibilidad.
+
+    </div>
+
+
+
+    <div class="panel" style="text-align:left">
+
+      <label class="choice">
+
+        <input type="checkbox" id="extraSupport">
+
+        <span>Necesito combinar mi modo con controles adicionales (por ejemplo, teclado o apoyos visuales).</span>
+
+      </label>
+
+      <p class="small-note">Puedes combinar ayudas. No tienes que usar una sola forma de comunicación.</p>
+
+    </div>
+
+
+
+    <button class="primary" onclick="continueProfile()">Continuar</button>
+
+    <div class="footer">Lumi · Comunicación para todos</div>
+
+  </section>
+
+
+
+  <!-- PANTALLA 2: NOMBRE -->
+
+  <section id="nameScreen" class="screen center">
+
+    <div class="logo" aria-label="Lumi">Lum<span class="sun-i" aria-hidden="true"><svg class="sun-dot" viewBox="0 0 28 16" aria-hidden="true"><path d="M5 12.5 Q14 1.5 23 12.5"/><path d="M14 1.2v2.2M4.1 5.1l1.7 1.4M23.9 5.1l-1.7 1.4"/></svg><span class="i-stem"></span></span></div>
+
+    <div class="panel">
+
+      <h2>¿Cómo te llamas?</h2>
+
+      <p class="small-note">Puedes escribir tu nombre o dejarlo en blanco.</p>
+
+      <input id="userName" class="field" type="text" placeholder="Escribe tu nombre" autocomplete="given-name">
+
+      <button class="primary" onclick="continueName()">Continuar</button>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- PANTALLA 3: IDENTIDAD OPCIONAL -->
+
+  <section id="identityScreen" class="screen center">
+
+    <div class="logo" aria-label="Lumi">Lum<span class="sun-i" aria-hidden="true"><svg class="sun-dot" viewBox="0 0 28 16" aria-hidden="true"><path d="M5 12.5 Q14 1.5 23 12.5"/><path d="M14 1.2v2.2M4.1 5.1l1.7 1.4M23.9 5.1l-1.7 1.4"/></svg><span class="i-stem"></span></span></div>
+
+    <div class="panel">
+
+      <h2>¿Cómo te identificas?</h2>
+
+      <p class="small-note">Esta pregunta es opcional. No limita ninguna función de Lumi.</p>
+
+      <div class="choice-list">
+
+        <label class="choice"><input type="radio" name="identity" value="Hombre"> Hombre</label>
+
+        <label class="choice"><input type="radio" name="identity" value="Mujer"> Mujer</label>
+
+        <label class="choice"><input type="radio" name="identity" value="Transexual"> Transexual</label>
+
+        <label class="choice"><input type="radio" name="identity" value="No binario"> No binario</label>
+
+        <label class="choice"><input type="radio" name="identity" value="Queer"> Queer</label>
+
+        <label class="choice"><input type="radio" name="identity" value="Prefiero no decirlo"> Prefiero no decirlo</label>
+
+      </div>
+
+      <button class="primary" onclick="finishWelcome()">Entrar a Lumi</button>
+
+      <button class="secondary" onclick="finishWelcome()">Omitir</button>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- PANTALLA 4: MENÚ PRINCIPAL -->
+
+  <section id="homeScreen" class="screen">
+
+    <div class="topbar">
+
+      <div class="logo" aria-label="Lumi">Lum<span class="sun-i" aria-hidden="true"><svg class="sun-dot" viewBox="0 0 28 16" aria-hidden="true"><path d="M5 12.5 Q14 1.5 23 12.5"/><path d="M14 1.2v2.2M4.1 5.1l1.7 1.4M23.9 5.1l-1.7 1.4"/></svg><span class="i-stem"></span></span></div>
+
+      <button class="secondary" onclick="goBackToProfile()">Cambiar modo</button>
+
+    </div>
+
+
+
+    <div class="welcome">
+
+      <h2 id="welcomeTitle">¡Bienvenido a Lumi!</h2>
+
+      <p id="modeDescription"></p>
+
+    </div>
+
+
+
+    <div id="voicePanel" class="panel hidden">
+
+      <h2>🔊 Control por voz</h2>
+
+      <p>Puedes decir el nombre de una aplicación para abrirla. También puedes decir «menú», «volver», «repetir», «ayuda» o «detener lectura».</p>
+
+      <div id="voiceStatus" class="status warning" aria-live="polite">El micrófono todavía no está activado.</div>
+
+      <button id="voiceButton" class="primary" onclick="toggleVoice()">Activar micrófono</button>
+
+      <button class="secondary" onclick="readMenu()">Leer menú</button>
+
+      <button class="secondary" onclick="stopSpeaking()">Detener lectura</button>
+
+    </div>
+
+
+
+    <div id="optionalDictation" class="panel hidden">
+
+      <h2>🎙️ Dictado opcional</h2>
+
+      <p>Si puedes hablar y deseas hacerlo, puedes dictar un mensaje.</p>
+
+      <button class="primary" onclick="startDictation()">Activar dictado</button>
+
+      <div id="dictationStatus" class="status" aria-live="polite">Dictado desactivado.</div>
+
+    </div>
+
+
+
+    <h2>¿Qué quieres hacer?</h2>
+
+    <div class="apps">
+
+      <button class="app pink" onclick="openApp('mensajes')"><span class="emoji">💬</span><strong>Mensajes</strong><small>Comunícate con otras personas</small></button>
+
+      <button class="app blue" onclick="openApp('social')"><span class="emoji">🌍</span><strong>Red social</strong><small>Un espacio social accesible</small></button>
+
+      <button class="app green" onclick="openApp('traductor')"><span class="emoji">🔄</span><strong>Traductor de comunicación</strong><small>Distintas formas de comunicarse</small></button>
+
+      <button class="app purple" onclick="openApp('senas')"><span class="emoji">🤟</span><strong>Lengua de señas</strong><small>Comunicación visual</small></button>
+
+      <button class="app yellow" onclick="openApp('asistente')"><span class="emoji">✨</span><strong>Asistente Lumi</strong><small>Ayuda y orientación</small></button>
+
+      <button class="app peach" onclick="openApp('audiolibros')"><span class="emoji">📚</span><strong>Audiolibros</strong><small>Escucha historias y libros</small></button>
+
+    </div>
+
+    <div class="footer">Lumi · Un espacio para comunicarnos</div>
+
+  </section>
+
+
+
+  <!-- PANTALLA 5: CONTENIDO DE LAS APLICACIONES -->
+
+  <section id="appScreen" class="screen">
+
+    <div class="topbar">
+
+      <div class="logo" aria-label="Lumi">Lum<span class="sun-i" aria-hidden="true"><svg class="sun-dot" viewBox="0 0 28 16" aria-hidden="true"><path d="M5 12.5 Q14 1.5 23 12.5"/><path d="M14 1.2v2.2M4.1 5.1l1.7 1.4M23.9 5.1l-1.7 1.4"/></svg><span class="i-stem"></span></span></div>
+
+      <button class="secondary" onclick="goHome()">Volver al menú</button>
+
+    </div>
+
+
+
+    <div class="panel app-detail">
+
+      <div id="appEmoji" class="big-emoji">💬</div>
+
+      <h2 id="appTitle" style="text-align:center"></h2>
+
+      <p id="appDescription" style="text-align:center"></p>
+
+
+
+      <div id="messageTools" class="hidden">
+
+        <label for="messageText"><strong>Escribe tu mensaje:</strong></label>
+
+        <textarea id="messageText" class="field" placeholder="Escribe aquí lo que quieres comunicar..."></textarea>
+
+        <button class="primary" onclick="showMessage()">Mostrar mensaje</button>
+
+        <button id="speakMessageButton" class="secondary hidden" onclick="speakMessage()">Escuchar mensaje</button>
+
+        <div id="messageOutput" class="message-output" aria-live="polite">Aquí aparecerá tu mensaje.</div>
+
+      </div>
+
+
+
+      <div id="appExtra" class="status"></div>
+
+      <div id="appActions"></div>
+
+    </div>
+
+  </section>
+
+
+
+  <script>
+
+    let selectedMode = "";
+
+    let userName = "";
+
+    let alternativeControls = false;
+
+    let recognition = null;
+
+    let isListening = false;
+
+    let voiceWanted = false;
+
+    let currentApp = "";
+
+    let lastSpokenText = "";
+
+    let blindSetupRunning = false;
+    let previewedMode = "";
+
+
+
+    const appData = {
+
+      mensajes: {
+
+        title: "Mensajes",
+
+        emoji: "💬",
+
+        description: "Un espacio para escribir y compartir mensajes.",
+
+        extra: "Esta versión es una demostración. Todavía no está conectada a otros usuarios."
+
+      },
+
+      social: {
+
+        title: "Red social",
+
+        emoji: "🌍",
+
+        description: "Un espacio pensado para compartir, conversar y participar.",
+
+        extra: "La red social todavía no está conectada. Estamos diseñando sus funciones accesibles."
+
+      },
+
+      traductor: {
+
+        title: "Traductor de comunicación",
+
+        emoji: "🔄",
+
+        description: "La idea es ayudar a convertir distintas formas de comunicación.",
+
+        extra: "La traducción automática todavía no está implementada. Esta es una vista inicial del proyecto."
+
+      },
+
+      senas: {
+
+        title: "Lengua de señas",
+
+        emoji: "🤟",
+
+        description: "Un espacio para aprender y facilitar la comunicación mediante lengua de señas.",
+
+        extra: "Todavía no reconoce ni traduce señas. Esa función se desarrollará en una etapa futura."
+
+      },
+
+      asistente: {
+
+        title: "Asistente Lumi",
+
+        emoji: "✨",
+
+        description: "Un asistente para orientar y acompañar a las personas dentro de Lumi.",
+
+        extra: "El asistente de inteligencia artificial todavía no está conectado."
+
+      },
+
+      audiolibros: {
+
+        title: "Audiolibros",
+
+        emoji: "📚",
+
+        description: "Un espacio pensado para escuchar libros e historias.",
+
+        extra: "La biblioteca de audiolibros todavía no está conectada."
+
+      }
+
+    };
+
+
+
+    function showScreen(id) {
+
+      document.querySelectorAll(".screen").forEach(screen => screen.classList.remove("active"));
+
+      document.getElementById(id).classList.add("active");
+
+      window.scrollTo(0, 0);
+
+    }
+
+
+
+    function selectProfile(mode, button) {
+      selectedMode = mode;
+      document.querySelectorAll(".profile").forEach(item => item.classList.remove("selected"));
+      if (button) button.classList.add("selected");
+      if (window.lumiVoiceSelection && mode !== "sordo") {
+        window.lumiVoiceSelection = false;
+        startGuidedRegistration(true);
+      }
+    }
+
+    function startLumiVoice() {
+      const status = document.getElementById("startupStatus");
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (!SpeechRecognition) {
+        status.textContent = "Este navegador no reconoce voz. Usa Chrome o Edge actualizado. También puedes elegir con el tacto.";
+        speak("Hola, soy Lumi. Para usar el control por voz, abre esta página en Google Chrome o Microsoft Edge actualizado. También puedes elegir con el tacto.");
+        return;
+      }
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        status.textContent = "Abre Lumi mediante HTTPS o Live Server para activar el micrófono.";
+        speak("Para activar el micrófono, abre Lumi mediante una conexión segura o Live Server.");
+        return;
+      }
+      status.textContent = "Solicitando permiso para utilizar el micrófono...";
+      navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
+        stream.getTracks().forEach(track => track.stop());
+        status.textContent = "Micrófono autorizado. Di Ciego, Mudo, Sordo o Ninguna de ellas. También puedes tocar una opción.";
+        speak("Hola, soy Lumi. Ya puedes elegir cómo quieres comunicarte. Di Ciego, Mudo, Sordo o Ninguna de ellas. También puedes tocar una opción.", listenForProfile);
+      }).catch(() => {
+        status.textContent = "No se autorizó el micrófono. Puedes permitirlo en el navegador o elegir con el tacto.";
+        speak("No tengo permiso para usar el micrófono. Puedes permitirlo en el navegador o elegir una opción con el tacto.");
+      });
+    }
+
+    function listenForProfile(attemptsLeft = 3) {
+      const question = "Di Ciego, Mudo, Sordo o Ninguna de ellas.";
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (!SpeechRecognition) return;
+      const listener = new SpeechRecognition();
+      listener.lang = "es-CL";
+      listener.continuous = false;
+      listener.interimResults = false;
+      listener.onresult = event => {
+        const answer = normalizeVoice(event.results[0][0].transcript);
+        let mode = "";
+        if (answer.includes("ciego") || answer.includes("ciega")) mode = "ciego";
+        else if (answer.includes("mudo") || answer.includes("muda")) mode = "mudo";
+        else if (answer.includes("sordo") || answer.includes("sorda")) mode = "sordo";
+        else if (answer.includes("ninguna") || answer.includes("general")) mode = "general";
+        if (!mode) {
+          if (attemptsLeft > 1) speak("No reconocí el modo. " + question, () => listenForProfile(attemptsLeft - 1));
+          else speak("Puedes tocar una opción en la pantalla y luego Continuar.");
+          return;
+        }
+        const button = document.querySelector('.profile[onclick*="' + mode + '"]');
+        window.lumiVoiceSelection = mode !== "sordo";
+        selectProfile(mode, button);
+        if (mode === "sordo") {
+          speak("Has elegido el modo Sordo. Desde ahora la configuración será visual y escrita.", () => continueProfile());
+        }
+      };
+      listener.onerror = () => {
+        if (attemptsLeft > 1) speak("No te escuché. " + question, () => listenForProfile(attemptsLeft - 1));
+        else speak("Puedes tocar una opción en la pantalla y luego Continuar.");
+      };
+      try { listener.start(); } catch (error) { speak("Puedes tocar una opción en la pantalla y luego Continuar."); }
+    }
+
+    function continueProfile() {
+      if (!selectedMode) {
+        speak("Por favor, elige un modo de accesibilidad.");
+        return;
+      }
+      alternativeControls = document.getElementById("extraSupport").checked;
+      if (selectedMode === "sordo") {
+        showScreen("nameScreen");
+        return;
+      }
+      startGuidedRegistration(false);
+    }
+
+    function startGuidedRegistration(fromVoice) {
+      if (blindSetupRunning) return;
+      blindSetupRunning = true;
+      const begin = () => {
+        showScreen("nameScreen");
+        const question = "¿Cómo te llamas? Puedes decir tu nombre o decir omitir.";
+        speak("Muy bien. Vamos con la siguiente pregunta. " + question, () => {
+          listenOnce(question, answer => {
+            if (!normalizeVoice(answer).includes("omitir")) {
+              userName = answer;
+              document.getElementById("userName").value = answer;
+            }
+            showScreen("identityScreen");
+            askGuidedIdentity();
+          });
+        });
+      };
+      if (fromVoice) begin();
+      else if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
+          stream.getTracks().forEach(track => track.stop());
+          begin();
+        }).catch(() => {
+          blindSetupRunning = false;
+          speak("No tengo permiso para usar el micrófono. Autorízalo en el navegador o elige Sordo para continuar por escrito.");
+        });
+      } else {
+        blindSetupRunning = false;
+        speak("Para responder por voz, abre Lumi con Live Server en Chrome o Edge.");
+      }
+    }
+
+    function askGuidedIdentity() {
+      const question = "¿Cómo te identificas? Di hombre, mujer, transexual, no binario, queer o prefiero no decirlo. También puedes decir omitir.";
+      speak(question, () => listenOnce(question, answer => {
+        const response = normalizeVoice(answer);
+        const choices = [
+          ["hombre", "Hombre"], ["mujer", "Mujer"], ["transexual", "Transexual"],
+          ["no binario", "No binario"], ["queer", "Queer"],
+          ["prefiero no decirlo", "Prefiero no decirlo"]
+        ];
+        const selected = choices.find(item => response.includes(item[0]));
+        if (selected) {
+          document.querySelectorAll('#identityScreen input[name="identity"]').forEach(radio => radio.checked = radio.value === selected[1]);
+        } else if (!response.includes("omitir") && !response.includes("no quiero decir")) {
+          speak("No reconocí esa respuesta. " + question, askGuidedIdentity);
+          return;
+        }
+        speak("Gracias. Ya terminamos la configuración. Entraremos a Lumi.", () => {
+          blindSetupRunning = false;
+          finishWelcome();
+        });
+      }));
+    }
+
+    function continueName() {
+
+      userName = document.getElementById("userName").value.trim();
+
+      showScreen("identityScreen");
+
+    }
+
+
+
+    function finishWelcome() {
+
+      showScreen("homeScreen");
+
+      applyMode();
+
+    }
+
+
+
+    function speak(text, callback) {
+
+      if (!("speechSynthesis" in window)) {
+
+        if (callback) callback();
+
+        return;
+
+      }
+
+      window.speechSynthesis.cancel();
+
+      lastSpokenText = text;
+
+      const utterance = new SpeechSynthesisUtterance(text);
+
+      utterance.lang = "es-CL";
+
+      utterance.rate = 0.9;
+
+      utterance.pitch = 1;
+
+      if (callback) utterance.onend = callback;
+
+      window.speechSynthesis.speak(utterance);
+
+    }
+
+
+
+    function stopSpeaking() {
+
+      if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+
+    }
+
+
+
+    function listenOnce(question, callback, attemptsLeft = 2) {
+
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+
+
+      if (!SpeechRecognition) {
+
+        speak("Este navegador no permite reconocer la voz. Prueba con Google Chrome o Microsoft Edge actualizado.");
+
+        return;
+
+      }
+
+
+
+      const listener = new SpeechRecognition();
+
+      listener.lang = "es-CL";
+
+      listener.continuous = false;
+
+      listener.interimResults = false;
+
+      listener.maxAlternatives = 1;
+
+
+
+      listener.onresult = event => {
+
+        const answer = event.results[0][0].transcript.trim();
+
+        callback(answer);
+
+      };
+
+
+
+      listener.onerror = event => {
+
+        if (event.error === "not-allowed" || event.error === "service-not-allowed") {
+
+          speak("No tengo permiso para usar el micrófono. Permite el acceso al micrófono en Chrome y vuelve a intentarlo.");
+
+        } else if (attemptsLeft > 0) {
+
+          speak("No te escuché correctamente. " + question, () => {
+
+            listenOnce(question, callback, attemptsLeft - 1);
+
+          });
+
+        } else {
+
+          speak("No pude escuchar tu respuesta. Puedes volver a pulsar Ciego para intentarlo de nuevo.");
+
+          blindSetupRunning = false;
+
+        }
+
+      };
+
+
+
+      listener.onend = () => {};
+
+      try {
+
+        listener.start();
+
+      } catch (error) {
+
+        speak("No pude iniciar el micrófono. Comprueba que no esté siendo utilizado por otra aplicación.");
+
+        blindSetupRunning = false;
+
+      }
+
+    }
+
+
+
+    function startBlindWelcome() {
+
+      if (blindSetupRunning) return;
+
+      blindSetupRunning = true;
+
+
+
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+      if (!SpeechRecognition) {
+
+        blindSetupRunning = false;
+
+        speak("Para usar el modo Ciego con voz, abre Lumi en Google Chrome o Microsoft Edge actualizado.");
+
+        return;
+
+      }
+
+
+
+      // El permiso se solicita directamente como consecuencia del clic en Ciego.
+
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+
+        blindSetupRunning = false;
+
+        speak("Para activar el micrófono, abre Lumi con Live Server en Chrome. No uses el archivo directamente.");
+
+        return;
+
+      }
+
+
+
+      navigator.mediaDevices.getUserMedia({ audio: true })
+
+        .then(stream => {
+
+          stream.getTracks().forEach(track => track.stop());
+
+          showScreen("nameScreen");
+
+          speak("Hola, soy Lumi. Vamos a configurar tu espacio por voz. ¿Cómo te llamas?", () => {
+
+            listenOnce("¿Cómo te llamas?", answer => {
+
+              userName = answer;
+
+              document.getElementById("userName").value = answer;
+
+              showScreen("identityScreen");
+
+              askBlindIdentity();
+
+            });
+
+          });
+
+        })
+
+        .catch(error => {
+
+          blindSetupRunning = false;
+
+          speak("No tengo permiso para usar el micrófono. Debes permitir el acceso cuando Chrome te lo pregunte y luego volver a pulsar Ciego.");
+
+        });
+
+    }
+
+
+
+    function normalizeVoice(text) {
+
+      return text.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
+
+    }
+
+
+
+    function askBlindIdentity() {
+
+      const question = "¿Cómo te identificas? Puedes decir hombre, mujer, transexual, no binario, queer o prefiero no decirlo.";
+
+      speak(question, () => {
+
+        listenOnce(question, answer => {
+
+          const response = normalizeVoice(answer);
+
+          const choices = [
+
+            ["hombre", "Hombre"],
+
+            ["mujer", "Mujer"],
+
+            ["transexual", "Transexual"],
+
+            ["no binario", "No binario"],
+
+            ["queer", "Queer"],
+
+            ["prefiero no decirlo", "Prefiero no decirlo"]
+
+          ];
+
+
+
+          let selected = choices.find(item => response.includes(item[0]));
+
+          if (!selected && response.includes("no quiero decir")) {
+
+            selected = ["prefiero no decirlo", "Prefiero no decirlo"];
+
+          }
+
+
+
+          if (!selected) {
+
+            speak("No reconocí esa opción. " + question, askBlindIdentity);
+
+            return;
+
+          }
+
+
+
+          document.querySelectorAll('#identityScreen input[name="identity"]').forEach(radio => {
+
+            radio.checked = radio.value === selected[1];
+
+          });
+
+
+
+          speak("Muchas gracias. Ya terminamos el registro. Entraremos al menú principal.", () => {
+
+            blindSetupRunning = false;
+
+            finishWelcome();
+
+          });
+
+        });
+
+      });
+
+    }
+
+
+
+    function getPersonalGreeting() {
+      const identity = document.querySelector('input[name="identity"]:checked')?.value || "";
+      if (identity === "Hombre") return "Hola amigo";
+      if (identity === "Mujer") return "Hola amiga";
+      return "Hola, qué alegría tenerte aquí";
+    }
+
+    function applyMode() {
+      const name = userName.trim();
+      const greeting = getPersonalGreeting();
+      document.getElementById("welcomeTitle").textContent =
+        greeting + (name ? ", " + name : "") + ". ¡Bienvenido a Lumi!";
+
+      const voicePanel = document.getElementById("voicePanel");
+
+      const dictationPanel = document.getElementById("optionalDictation");
+
+      const speakButton = document.getElementById("speakMessageButton");
+
+
+
+      voicePanel.classList.add("hidden");
+
+      dictationPanel.classList.add("hidden");
+
+      speakButton.classList.add("hidden");
+
+
+
+      if (selectedMode === "ciego") {
+
+        document.getElementById("modeDescription").textContent =
+
+          "Modo principalmente por audio. Lumi puede leer las opciones y escuchar tus comandos. No necesitas escribir para navegar.";
+
+        voicePanel.classList.remove("hidden");
+
+        if (alternativeControls) {
+
+          document.getElementById("modeDescription").textContent += " También has activado controles adicionales.";
+
+        }
+
+        setTimeout(() => {
+
+          speak(getPersonalGreeting() + (userName ? ", " + userName : "") + ". Ya estás en el menú principal.");
+
+          setTimeout(readMenu, 1800);
+
+        }, 400);
+
+      } else if (selectedMode === "mudo") {
+
+        document.getElementById("modeDescription").textContent =
+
+          "Modo visual y escrito. Puedes comunicarte escribiendo y utilizando elementos visuales. El audio es opcional.";
+
+        speakButton.classList.remove("hidden");
+
+      } else if (selectedMode === "sordo") {
+
+        document.getElementById("modeDescription").textContent =
+
+          "Modo visual y escrito. Puedes leer, escribir y explorar las opciones visuales. Si puedes hablar, también puedes activar el dictado opcional.";
+
+        dictationPanel.classList.remove("hidden");
+
+        speakButton.classList.remove("hidden");
+
+      } else {
+
+        document.getElementById("modeDescription").textContent =
+
+          "Modo general. Puedes explorar las aplicaciones y elegir la forma de comunicación que prefieras.";
+
+        dictationPanel.classList.remove("hidden");
+
+        speakButton.classList.remove("hidden");
+
+      }
+
+    }
+
+
+
+    function readMenu() {
+
+      speak(
+
+        "Menú principal. Di Mensajes para abrir Mensajes. " +
+
+        "Di Red social para abrir Red social. " +
+
+        "Di Traductor para abrir Traductor de comunicación. " +
+
+        "Di Lengua de señas para abrir Lengua de señas. " +
+
+        "Di Asistente Lumi para abrir el asistente. " +
+
+        "Di Audiolibros para abrir Audiolibros. " +
+
+        "Di ayuda para escuchar los comandos disponibles."
+
+      );
+
+    }
+
+
+
+    function toggleVoice() {
+
+      if (isListening) stopVoice();
+
+      else startVoice();
+
+    }
+
+
+
+    function startVoice() {
+
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+      if (!SpeechRecognition) {
+
+        document.getElementById("voiceStatus").textContent =
+
+          "Este navegador no ofrece reconocimiento de voz. Prueba Chrome o Edge actualizado.";
+
+        return;
+
+      }
+
+
+
+      if (!recognition) {
+
+        recognition = new SpeechRecognition();
+
+        recognition.lang = "es-CL";
+
+        recognition.continuous = true;
+
+        recognition.interimResults = false;
+
+
+
+        recognition.onstart = () => {
+
+          isListening = true;
+
+          voiceWanted = true;
+
+          document.getElementById("voiceStatus").textContent = "Micrófono activado. Lumi está escuchando.";
+
+          document.getElementById("voiceStatus").className = "status good";
+
+          document.getElementById("voiceButton").textContent = "Desactivar micrófono";
+
+        };
+
+
+
+        recognition.onresult = event => {
+
+          const result = event.results[event.results.length - 1][0].transcript;
+
+          handleVoiceCommand(result);
+
+        };
+
+
+
+        recognition.onerror = event => {
+
+          isListening = false;
+
+          voiceWanted = false;
+
+          document.getElementById("voiceStatus").textContent =
+
+            "No se pudo utilizar el micrófono: " + event.error + ". Revisa los permisos del navegador.";
+
+          document.getElementById("voiceStatus").className = "status warning";
+
+          document.getElementById("voiceButton").textContent = "Activar micrófono";
+
+        };
+
+
+
+        recognition.onend = () => {
+
+          isListening = false;
+
+          document.getElementById("voiceButton").textContent = "Activar micrófono";
+
+          if (voiceWanted) {
+
+            document.getElementById("voiceStatus").textContent = "La escucha se detuvo. Pulsa Activar micrófono para continuar.";
+
+          }
+
+        };
+
+      }
+
+
+
+      try {
+
+        recognition.start();
+
+        document.getElementById("voiceStatus").textContent = "Solicitando permiso para utilizar el micrófono...";
+
+      } catch (error) {
+
+        document.getElementById("voiceStatus").textContent = "El micrófono ya está iniciándose. Espera un momento.";
+
+      }
+
+    }
+
+
+
+    function stopVoice() {
+
+      voiceWanted = false;
+
+      if (recognition && isListening) recognition.stop();
+
+      isListening = false;
+
+      document.getElementById("voiceStatus").textContent = "Micrófono desactivado.";
+
+      document.getElementById("voiceStatus").className = "status";
+
+      document.getElementById("voiceButton").textContent = "Activar micrófono";
+
+    }
+
+
+
+    function handleVoiceCommand(command) {
+
+      const text = normalizeVoice(command);
+
+
+
+      if (text.includes("detener lectura") || text.includes("silencio") || text === "detener") {
+
+        stopSpeaking();
+
+        return;
+
+      }
+
+      if (text.includes("repetir")) {
+
+        if (lastSpokenText) speak(lastSpokenText);
+
+        return;
+
+      }
+
+      if (text.includes("ayuda")) {
+
+        speak("Puedes decir Mensajes, Red social, Traductor, Lengua de señas, Asistente Lumi o Audiolibros. También puedes decir menú o volver.");
+
+        return;
+
+      }
+
+      if (text.includes("menu") || text.includes("volver")) {
+
+        goHome();
+
+        return;
+
+      }
+
+
+
+      const commands = [
+
+        ["mensajes", "mensajes"],
+
+        ["red social", "social"],
+
+        ["traductor", "traductor"],
+
+        ["lengua de senas", "senas"],
+
+        ["asistente", "asistente"],
+
+        ["audiolibros", "audiolibros"]
+
+      ];
+
+
+
+      for (const item of commands) {
+
+        if (text.includes(item[0])) {
+
+          openApp(item[1]);
+
+          return;
+
+        }
+
+      }
+
+      speak("No entendí ese comando. Puedes decir ayuda para escuchar las opciones.");
+
+    }
+
+
+
+    function startDictation() {
+
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+      const status = document.getElementById("dictationStatus");
+
+
+
+      if (!SpeechRecognition) {
+
+        status.textContent = "El dictado por voz no está disponible en este navegador.";
+
+        return;
+
+      }
+
+
+
+      const dictation = new SpeechRecognition();
+
+      dictation.lang = "es-CL";
+
+      dictation.continuous = false;
+
+      dictation.interimResults = false;
+
+      status.textContent = "Solicitando permiso para dictar...";
+
+
+
+      dictation.onresult = event => {
+
+        const words = event.results[0][0].transcript;
+
+        const field = document.getElementById("messageText");
+
+        field.value += (field.value ? " " : "") + words;
+
+        status.textContent = "Dictado recibido. Puedes revisar el texto.";
+
+      };
+
+
+
+      dictation.onerror = event => {
+
+        status.textContent = "No se pudo utilizar el dictado: " + event.error;
+
+      };
+
+
+
+      dictation.onend = () => {
+
+        if (status.textContent.includes("Solicitando")) status.textContent = "Dictado finalizado.";
+
+      };
+
+
+
+      try { dictation.start(); }
+
+      catch (error) { status.textContent = "No se pudo iniciar el dictado. Inténtalo nuevamente."; }
+
+    }
+
+
+
+    function openApp(app) {
+
+      const data = appData[app];
+
+      if (!data) return;
+
+
+
+      currentApp = app;
+
+      showScreen("appScreen");
+
+      document.getElementById("appEmoji").textContent = data.emoji;
+
+      document.getElementById("appTitle").textContent = data.title;
+
+      document.getElementById("appDescription").textContent = data.description;
+
+      document.getElementById("appExtra").textContent = data.extra;
+
+
+
+      const messageTools = document.getElementById("messageTools");
+
+      const actions = document.getElementById("appActions");
+
+      messageTools.classList.add("hidden");
+
+      actions.innerHTML = "";
+
+
+
+      if (app === "mensajes") {
+
+        if (selectedMode !== "ciego" || alternativeControls) {
+
+          messageTools.classList.remove("hidden");
+
+        } else {
+
+          document.getElementById("appExtra").textContent =
+
+            "En este prototipo, la escritura no está habilitada en el modo ciego principal. La navegación se realiza por voz. Para otras formas de comunicación se necesitará LumiCube.";
+
+        }
+
+      }
+
+
+
+      if (selectedMode === "ciego") {
+
+        speak(data.title + ". " + data.description + " " + data.extra + " Di menú para volver.");
+
+      }
+
+    }
+
+
+
+    function showMessage() {
+
+      const value = document.getElementById("messageText").value.trim();
+
+      document.getElementById("messageOutput").textContent =
+
+        value || "Primero escribe un mensaje.";
+
+    }
+
+
+
+    function speakMessage() {
+
+      const value = document.getElementById("messageText").value.trim();
+
+      if (value) speak(value);
+
+      else alert("Primero escribe un mensaje.");
+
+    }
+
+
+
+    function goHome() {
+
+      stopSpeaking();
+
+      showScreen("homeScreen");
+
+      if (selectedMode === "ciego") {
+
+        speak("Menú principal.", () => readMenu());
+
+      }
+
+    }
+
+
+
+    function goBackToProfile() {
+
+      stopVoice();
+
+      stopSpeaking();
+
+      blindSetupRunning = false;
+
+      selectedMode = "";
+
+      previewedMode = "";
+
+      showScreen("profileScreen");
+
+    }
+
+
+
+    document.addEventListener("keydown", event => {
+
+      if (event.key === "Escape") stopSpeaking();
+
+    });
+
+    window.addEventListener("load", () => {
+      setTimeout(() => speak("Hola, soy Lumi. Bienvenido. Puedes comenzar por voz activando el micrófono, o elegir una opción con el tacto."), 350);
+    });
+
+  </script>
+
+</body>
+
+</html>

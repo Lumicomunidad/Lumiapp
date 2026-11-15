@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="lumiBg512" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFDF7"/>
+      <stop offset="100%" stop-color="#FFF4D4"/>
+    </linearGradient>
+    <filter id="shadow512" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#4A3B12" flood-opacity="0.14"/>
+    </filter>
+  </defs>
+  <!-- Base card -->
+  <rect x="24" y="24" width="464" height="464" rx="108" fill="url(#lumiBg512)" stroke="#EAD99F" stroke-width="8" filter="url(#shadow512)"/>
+  
+  <!-- Lumi solar symbol -->
+  <g transform="translate(256, 185)">
+    <!-- Sun arc -->
+    <path d="M -60 16 Q 0 -48 60 16" fill="none" stroke="#D4A72C" stroke-width="14" stroke-linecap="round"/>
+    <!-- Sun rays -->
+    <line x1="0" y1="-48" x2="0" y2="-72" stroke="#D4A72C" stroke-width="12" stroke-linecap="round"/>
+    <line x1="-42" y1="-32" x2="-58" y2="-48" stroke="#D4A72C" stroke-width="12" stroke-linecap="round"/>
+    <line x1="42" y1="-32" x2="58" y2="-48" stroke="#D4A72C" stroke-width="12" stroke-linecap="round"/>
+    <line x1="-64" y1="6" x2="-86" y2="6" stroke="#D4A72C" stroke-width="12" stroke-linecap="round"/>
+    <line x1="64" y1="6" x2="86" y2="6" stroke="#D4A72C" stroke-width="12" stroke-linecap="round"/>
+    <!-- Glowing core -->
+    <circle cx="0" cy="0" r="28" fill="#F5DF91" stroke="#D4A72C" stroke-width="7"/>
+  </g>
+
+  <!-- Typography: LUMI -->
+  <text x="256" y="380" font-family="'Trebuchet MS', 'Outfit', 'Segoe UI', Arial, sans-serif" font-size="94" font-weight="800" letter-spacing="-4" fill="#202020" text-anchor="middle">
+    Lumi
+  </text>
+  <text x="256" y="425" font-family="'Segoe UI', Arial, sans-serif" font-size="26" font-weight="600" letter-spacing="3" fill="#7A611B" text-anchor="middle">
+    COMUNICACIÓN ACCESIBLE
+  </text>
+</svg>

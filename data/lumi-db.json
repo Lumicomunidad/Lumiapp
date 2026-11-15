@@ -1,0 +1,903 @@
+{
+  "users": [
+    {
+      "id": "u_b862884c-6999-479d-989e-4e56b3e6bdd7",
+      "name": "Elena",
+      "email": "elena_test_1794511309967@lumi.app",
+      "mode": "mudo",
+      "alternativeControls": false,
+      "identity": "Mujer",
+      "cubePaired": false,
+      "createdAt": "2026-11-12T19:21:50.106Z",
+      "passwordSalt": "bb36433c7b298962e3100f9d0dfb47a7",
+      "passwordHash": "7ae054bbb456c20afd4a121f45732689be7e16ce3896ff1ec959e9114d842d36e9235b2fc3c814eca053e6b1914b68852b3251c2569387b57a86a9eff545a84f"
+    }
+  ],
+  "sessions": [
+    {
+      "token": "f9cc727fe0e58ef2166dae972e913b0868a0950c5dfc31e2c639bc36222486e1",
+      "userId": "u_b862884c-6999-479d-989e-4e56b3e6bdd7",
+      "createdAt": "2026-11-12T19:21:50.106Z"
+    }
+  ],
+  "contactsByUser": {
+    "u_b862884c-6999-479d-989e-4e56b3e6bdd7": [
+      {
+        "id": "familia",
+        "name": "Clara (Familia)",
+        "role": "Contacto prioritario",
+        "preferredChannel": "Texto y voz"
+      },
+      {
+        "id": "comunidad",
+        "name": "Grupo Lumi Comunidad",
+        "role": "Sala accesible",
+        "preferredChannel": "Multimodal"
+      },
+      {
+        "id": "soporte",
+        "name": "Equipo LumiCube",
+        "role": "Asistencia técnica",
+        "preferredChannel": "Lectura fácil"
+      }
+    ],
+    "guest": [
+      {
+        "id": "familia",
+        "name": "Clara (Familia)",
+        "role": "Contacto prioritario",
+        "preferredChannel": "Multimodal (texto y audio)",
+        "recipientMode": "general"
+      },
+      {
+        "id": "diego",
+        "name": "Diego (Modo Sordo)",
+        "role": "Amigo · Comunicación visual",
+        "preferredChannel": "Narración por voz + LumiCube",
+        "recipientMode": "ciego"
+      },
+      {
+        "id": "camila",
+        "name": "Camila (Modo Ciego)",
+        "role": "Amiga · Audio prioritario",
+        "preferredChannel": "Narración por voz + LumiCube",
+        "recipientMode": "ciego"
+      },
+      {
+        "id": "sofia",
+        "name": "Sofía (Modo Mudo)",
+        "role": "Compañera · Respuesta rápida por voz",
+        "preferredChannel": "Texto + Frases habladas",
+        "recipientMode": "mudo"
+      },
+      {
+        "id": "soporte",
+        "name": "Equipo LumiCube",
+        "role": "Asistencia técnica",
+        "preferredChannel": "Lectura fácil",
+        "recipientMode": "general"
+      }
+    ]
+  },
+  "messagesByUser": {
+    "u_b862884c-6999-479d-989e-4e56b3e6bdd7": [
+      {
+        "id": "m1",
+        "contactId": "familia",
+        "sender": "contact",
+        "senderName": "Clara (Familia)",
+        "text": "Hola, ¿cómo vas hoy? Cuando llegues a casa me mandas un mensaje por Lumi.",
+        "modality": "texto",
+        "createdAt": "2026-11-12T10:15:00.000Z"
+      },
+      {
+        "id": "m2",
+        "contactId": "comunidad",
+        "sender": "contact",
+        "senderName": "Grupo Lumi Comunidad",
+        "text": "Bienvenidos al espacio de mensajes. Aquí puedes dictar con tu voz, escribir o usar frases rápidas.",
+        "modality": "frase_rapida",
+        "createdAt": "2026-11-12T10:40:00.000Z"
+      },
+      {
+        "id": "m3",
+        "contactId": "soporte",
+        "sender": "contact",
+        "senderName": "Equipo LumiCube",
+        "text": "Tu app Lumi está lista para vincularse con los 9 botones táctiles del futuro Teléfono Cubo.",
+        "modality": "texto",
+        "createdAt": "2026-11-12T11:00:00.000Z"
+      },
+      {
+        "id": "m_89afa724-36fd-44f6-a8ae-a6989dc5be17",
+        "contactId": "familia",
+        "sender": "me",
+        "senderName": "Elena",
+        "text": "Hola familia desde Lumi",
+        "modality": "texto",
+        "createdAt": "2026-11-12T19:21:51.770Z"
+      }
+    ],
+    "guest": [
+      {
+        "id": "m1",
+        "contactId": "familia",
+        "sender": "contact",
+        "senderName": "Clara (Familia)",
+        "text": "Hola, ¿cómo vas hoy? Cuando llegues a casa me mandas un mensaje por Lumi.",
+        "modality": "texto",
+        "transformed": {
+          "recipientMode": "general",
+          "modeLabel": "Adaptado para receptor general (Texto y audio)",
+          "adaptedHeadline": "Mensaje claro en texto y audio",
+          "adaptedText": "Hola, ¿cómo vas hoy? Cuando llegues a casa me mandas un mensaje por Lumi.",
+          "audioScript": "Hola, ¿cómo vas hoy? Cuando llegues a casa me mandas un mensaje por Lumi.",
+          "signGloss": [
+            {
+              "token": "hola",
+              "gloss": "HOLA",
+              "cue": "Seña clara para \"hola\" con expresión facial acorde."
+            },
+            {
+              "token": "como",
+              "gloss": "COMO",
+              "cue": "Seña clara para \"como\" con expresión facial acorde."
+            },
+            {
+              "token": "vas",
+              "gloss": "VAS",
+              "cue": "Seña clara para \"vas\" con expresión facial acorde."
+            },
+            {
+              "token": "hoy",
+              "gloss": "HOY",
+              "cue": "Seña clara para \"hoy\" con expresión facial acorde."
+            }
+          ],
+          "pictograms": [
+            {
+              "symbol": "👋",
+              "label": "HOLA"
+            },
+            {
+              "symbol": "💬",
+              "label": "COMO"
+            },
+            {
+              "symbol": "💬",
+              "label": "VAS"
+            },
+            {
+              "symbol": "💬",
+              "label": "HOY"
+            }
+          ],
+          "tactileCue": "Disponible para lectura visual, audio y control LumiCube.",
+          "suggestedReplies": [
+            "¡Gracias!",
+            "Recibido perfectamente",
+            "Hablamos pronto"
+          ],
+          "source": "local"
+        },
+        "createdAt": "2026-11-12T10:15:00.000Z"
+      },
+      {
+        "id": "m2",
+        "contactId": "diego",
+        "sender": "contact",
+        "senderName": "Diego (Modo Sordo)",
+        "text": "Hola, estoy esperando cerca de la estación. Avísame cuando llegues.",
+        "modality": "texto",
+        "transformed": {
+          "recipientMode": "sordo",
+          "modeLabel": "Adaptado para receptor sordo (Visual, Glosa y Señas)",
+          "adaptedHeadline": "Texto directo + Lengua de señas",
+          "adaptedText": "• Hola.\n• estoy esperando cerca de la estación.\n• Avísame cuando llegues.",
+          "audioScript": "Hola, estoy esperando cerca de la estación. Avísame cuando llegues.",
+          "signGloss": [
+            {
+              "token": "hola",
+              "gloss": "HOLA",
+              "cue": "Seña clara para \"hola\" con expresión facial acorde."
+            },
+            {
+              "token": "estoy",
+              "gloss": "ESTOY",
+              "cue": "Seña clara para \"estoy\" con expresión facial acorde."
+            },
+            {
+              "token": "esperando",
+              "gloss": "ESPERANDO",
+              "cue": "Seña clara para \"esperando\" con expresión facial acorde."
+            },
+            {
+              "token": "cerca",
+              "gloss": "CERCA",
+              "cue": "Seña clara para \"cerca\" con expresión facial acorde."
+            },
+            {
+              "token": "estacion",
+              "gloss": "ESTACION",
+              "cue": "Seña clara para \"estacion\" con expresión facial acorde."
+            },
+            {
+              "token": "avisame",
+              "gloss": "AVISAME",
+              "cue": "Seña clara para \"avisame\" con expresión facial acorde."
+            }
+          ],
+          "pictograms": [
+            {
+              "symbol": "👋",
+              "label": "HOLA"
+            },
+            {
+              "symbol": "💬",
+              "label": "ESTOY"
+            },
+            {
+              "symbol": "💬",
+              "label": "ESPERANDO"
+            },
+            {
+              "symbol": "💬",
+              "label": "CERCA"
+            }
+          ],
+          "tactileCue": "Aviso visual claro en pantalla (sin alerta sonora obligatoria).",
+          "suggestedReplies": [
+            "Entendido, gracias",
+            "Estoy en camino",
+            "¿Puedes explicarlo más simple?"
+          ],
+          "source": "local"
+        },
+        "createdAt": "2026-11-12T10:30:00.000Z"
+      },
+      {
+        "id": "m3",
+        "contactId": "camila",
+        "sender": "contact",
+        "senderName": "Camila (Modo Ciego)",
+        "text": "Hola, te escucho desde LumiCube. ¿Nos vemos a las cinco?",
+        "modality": "voz",
+        "transformed": {
+          "recipientMode": "ciego",
+          "modeLabel": "Adaptado para receptor ciego (Audio y LumiCube)",
+          "adaptedHeadline": "Guion claro para lectura por voz",
+          "adaptedText": "Hola, te escucho desde LumiCube. ¿Nos vemos a las cinco?",
+          "audioScript": "Mensaje recibido: Hola, te escucho desde LumiCube. ¿Nos vemos a las cinco?",
+          "signGloss": [],
+          "pictograms": [],
+          "tactileCue": "LumiCube: Pulsa Botón 3 (Cara Trasera) para escuchar o Botón 2 para responder por voz.",
+          "suggestedReplies": [
+            "Recibido, muchas gracias",
+            "Te respondo por voz ahora",
+            "¿Puedes darme más detalles?"
+          ],
+          "source": "local"
+        },
+        "createdAt": "2026-11-12T10:45:00.000Z"
+      },
+      {
+        "id": "m4",
+        "contactId": "sofia",
+        "sender": "contact",
+        "senderName": "Sofía (Modo Mudo)",
+        "text": "Ya estoy en la entrada, dime si necesitas que te espere.",
+        "modality": "frase_rapida",
+        "transformed": {
+          "recipientMode": "mudo",
+          "modeLabel": "Adaptado para receptor mudo (Lectura y respuesta hablada de un toque)",
+          "adaptedHeadline": "Mensaje claro con respuestas rápidas por voz",
+          "adaptedText": "Ya estoy en la entrada, dime si necesitas que te espere.",
+          "audioScript": "Ya estoy en la entrada, dime si necesitas que te espere.",
+          "signGloss": [
+            {
+              "token": "ya",
+              "gloss": "YA",
+              "cue": "Seña clara para \"ya\" con expresión facial acorde."
+            },
+            {
+              "token": "estoy",
+              "gloss": "ESTOY",
+              "cue": "Seña clara para \"estoy\" con expresión facial acorde."
+            },
+            {
+              "token": "entrada",
+              "gloss": "ENTRADA",
+              "cue": "Seña clara para \"entrada\" con expresión facial acorde."
+            },
+            {
+              "token": "dime",
+              "gloss": "DIME",
+              "cue": "Seña clara para \"dime\" con expresión facial acorde."
+            }
+          ],
+          "pictograms": [
+            {
+              "symbol": "💬",
+              "label": "YA"
+            },
+            {
+              "symbol": "💬",
+              "label": "ESTOY"
+            },
+            {
+              "symbol": "💬",
+              "label": "ENTRADA"
+            },
+            {
+              "symbol": "💬",
+              "label": "DIME"
+            }
+          ],
+          "tactileCue": "LumiCube: Botón 8 (Confirmar) reproduce en voz tu respuesta seleccionada.",
+          "suggestedReplies": [
+            "Sí, estoy de acuerdo.",
+            "Un momento por favor.",
+            "Gracias, ya lo reviso.",
+            "Necesito ayuda con esto."
+          ],
+          "source": "local"
+        },
+        "createdAt": "2026-11-12T10:55:00.000Z"
+      },
+      {
+        "id": "m5",
+        "contactId": "soporte",
+        "sender": "contact",
+        "senderName": "Equipo LumiCube",
+        "text": "Tu app Lumi está lista para vincularse con los 9 botones táctiles del futuro Teléfono Cubo.",
+        "modality": "texto",
+        "transformed": {
+          "recipientMode": "general",
+          "modeLabel": "Adaptado para receptor general (Texto y audio)",
+          "adaptedHeadline": "Mensaje claro en texto y audio",
+          "adaptedText": "Tu app Lumi está lista para vincularse con los 9 botones táctiles del futuro Teléfono Cubo.",
+          "audioScript": "Tu app Lumi está lista para vincularse con los 9 botones táctiles del futuro Teléfono Cubo.",
+          "signGloss": [
+            {
+              "token": "tu",
+              "gloss": "TU",
+              "cue": "Seña clara para \"tu\" con expresión facial acorde."
+            },
+            {
+              "token": "app",
+              "gloss": "APP",
+              "cue": "Seña clara para \"app\" con expresión facial acorde."
+            },
+            {
+              "token": "lumi",
+              "gloss": "LUMI",
+              "cue": "Seña clara para \"lumi\" con expresión facial acorde."
+            },
+            {
+              "token": "esta",
+              "gloss": "ESTA",
+              "cue": "Seña clara para \"esta\" con expresión facial acorde."
+            }
+          ],
+          "pictograms": [
+            {
+              "symbol": "💬",
+              "label": "TU"
+            },
+            {
+              "symbol": "💬",
+              "label": "APP"
+            },
+            {
+              "symbol": "💬",
+              "label": "LUMI"
+            },
+            {
+              "symbol": "💬",
+              "label": "ESTA"
+            }
+          ],
+          "tactileCue": "Disponible para lectura visual, audio y control LumiCube.",
+          "suggestedReplies": [
+            "¡Gracias!",
+            "Recibido perfectamente",
+            "Hablamos pronto"
+          ],
+          "source": "local"
+        },
+        "createdAt": "2026-11-12T11:00:00.000Z"
+      },
+      {
+        "id": "m_3fc11ac8-a730-4885-a313-8bc23632b387",
+        "contactId": "diego",
+        "sender": "me",
+        "senderName": "Tú",
+        "text": "Hola xfa necesito ayuda",
+        "modality": "texto",
+        "transformed": {
+          "recipientMode": "sordo",
+          "modeLabel": "Adaptado para receptor sordo (Visual, Glosa y Señas)",
+          "adaptedHeadline": "Solicitud de ayuda",
+          "adaptedText": "Hola. Por favor, necesito ayuda. Glosas en lengua de señas: HOLA. POR-FAVOR. YO NECESITAR AYUDA.",
+          "audioScript": "Hola, por favor necesito ayuda.",
+          "signGloss": [
+            {
+              "token": "hola",
+              "gloss": "HOLA",
+              "cue": "Seña clara para \"hola\" con expresión facial acorde."
+            },
+            {
+              "token": "por",
+              "gloss": "POR",
+              "cue": "Seña clara para \"por\" con expresión facial acorde."
+            },
+            {
+              "token": "favor",
+              "gloss": "FAVOR",
+              "cue": "Seña clara para \"favor\" con expresión facial acorde."
+            },
+            {
+              "token": "necesito",
+              "gloss": "NECESITO",
+              "cue": "Seña clara para \"necesito\" con expresión facial acorde."
+            },
+            {
+              "token": "ayuda",
+              "gloss": "AYUDA",
+              "cue": "Seña clara para \"ayuda\" con expresión facial acorde."
+            }
+          ],
+          "pictograms": [
+            {
+              "symbol": "👋",
+              "label": "HOLA"
+            },
+            {
+              "symbol": "💬",
+              "label": "POR"
+            },
+            {
+              "symbol": "💬",
+              "label": "FAVOR"
+            },
+            {
+              "symbol": "💬",
+              "label": "NECESITO"
+            }
+          ],
+          "tactileCue": "Aviso visual claro en pantalla (sin alerta sonora obligatoria).",
+          "suggestedReplies": [
+            "¿En qué te puedo ayudar?",
+            "Dime qué necesitas.",
+            "Ya voy."
+          ],
+          "source": "gemini"
+        },
+        "createdAt": "2026-11-13T02:08:00.406Z"
+      },
+      {
+        "id": "m_c729ccf4-2bcd-4531-9bb5-3e2bbc727610",
+        "contactId": "diego",
+        "sender": "contact",
+        "senderName": "Diego (Modo Sordo)",
+        "text": "Recibí tu mensaje en formato visual y señas. ¡Muchas gracias!",
+        "modality": "texto",
+        "transformed": {
+          "recipientMode": "general",
+          "modeLabel": "Adaptado para receptor general (Texto y audio)",
+          "adaptedHeadline": "Mensaje claro en texto y audio",
+          "adaptedText": "Recibí tu mensaje en formato visual y señas. ¡Muchas gracias!",
+          "audioScript": "Recibí tu mensaje en formato visual y señas. ¡Muchas gracias!",
+          "signGloss": [
+            {
+              "token": "recibi",
+              "gloss": "RECIBI",
+              "cue": "Seña clara para \"recibi\" con expresión facial acorde."
+            },
+            {
+              "token": "tu",
+              "gloss": "TU",
+              "cue": "Seña clara para \"tu\" con expresión facial acorde."
+            },
+            {
+              "token": "mensaje",
+              "gloss": "MENSAJE",
+              "cue": "Seña clara para \"mensaje\" con expresión facial acorde."
+            },
+            {
+              "token": "formato",
+              "gloss": "FORMATO",
+              "cue": "Seña clara para \"formato\" con expresión facial acorde."
+            }
+          ],
+          "pictograms": [
+            {
+              "symbol": "💬",
+              "label": "RECIBI"
+            },
+            {
+              "symbol": "💬",
+              "label": "TU"
+            },
+            {
+              "symbol": "💬",
+              "label": "MENSAJE"
+            },
+            {
+              "symbol": "💬",
+              "label": "FORMATO"
+            }
+          ],
+          "tactileCue": "Disponible para lectura visual, audio y control LumiCube.",
+          "suggestedReplies": [
+            "¡Gracias!",
+            "Recibido perfectamente",
+            "Hablamos pronto"
+          ],
+          "source": "local"
+        },
+        "createdAt": "2026-11-13T02:08:00.656Z"
+      },
+      {
+        "id": "m_3c402ec1-534b-4e47-8039-c04cc441607b",
+        "contactId": "diego",
+        "sender": "me",
+        "senderName": "Tú",
+        "text": "un mensaje de audio grabado",
+        "modality": "voz",
+        "transformed": {
+          "recipientMode": "ciego",
+          "modeLabel": "Adaptado para receptor ciego (Audio y LumiCube)",
+          "adaptedHeadline": "Guion claro para lectura por voz",
+          "adaptedText": "un mensaje de audio grabado.",
+          "audioScript": "Mensaje recibido: un mensaje de audio grabado.",
+          "signGloss": [],
+          "pictograms": [],
+          "tactileCue": "LumiCube: Pulsa Botón 3 (Cara Trasera) para escuchar o Botón 2 para responder por voz.",
+          "suggestedReplies": [
+            "Recibido, muchas gracias",
+            "Te respondo por voz ahora",
+            "¿Puedes darme más detalles?"
+          ],
+          "source": "local"
+        },
+        "createdAt": "2026-11-14T16:26:30.943Z"
+      },
+      {
+        "id": "m_26dc37e2-648c-4911-a303-4465df8a1acd",
+        "contactId": "diego",
+        "sender": "contact",
+        "senderName": "Diego (Modo Sordo)",
+        "text": "Recibí tu mensaje en formato visual y señas. ¡Muchas gracias!",
+        "modality": "texto",
+        "transformed": {
+          "recipientMode": "general",
+          "modeLabel": "Adaptado para receptor general (Texto y audio)",
+          "adaptedHeadline": "Mensaje claro en texto y audio",
+          "adaptedText": "Recibí tu mensaje en formato visual y señas. ¡Muchas gracias!",
+          "audioScript": "Recibí tu mensaje en formato visual y señas. ¡Muchas gracias!",
+          "signGloss": [
+            {
+              "token": "recibi",
+              "gloss": "RECIBI",
+              "cue": "Seña clara para \"recibi\" con expresión facial acorde."
+            },
+            {
+              "token": "tu",
+              "gloss": "TU",
+              "cue": "Seña clara para \"tu\" con expresión facial acorde."
+            },
+            {
+              "token": "mensaje",
+              "gloss": "MENSAJE",
+              "cue": "Seña clara para \"mensaje\" con expresión facial acorde."
+            },
+            {
+              "token": "formato",
+              "gloss": "FORMATO",
+              "cue": "Seña clara para \"formato\" con expresión facial acorde."
+            }
+          ],
+          "pictograms": [
+            {
+              "symbol": "💬",
+              "label": "RECIBI"
+            },
+            {
+              "symbol": "💬",
+              "label": "TU"
+            },
+            {
+              "symbol": "💬",
+              "label": "MENSAJE"
+            },
+            {
+              "symbol": "💬",
+              "label": "FORMATO"
+            }
+          ],
+          "tactileCue": "Disponible para lectura visual, audio y control LumiCube.",
+          "suggestedReplies": [
+            "¡Gracias!",
+            "Recibido perfectamente",
+            "Hablamos pronto"
+          ],
+          "source": "local"
+        },
+        "createdAt": "2026-11-14T16:26:31.765Z"
+      },
+      {
+        "id": "m_6e1b8ed5-66d6-47e1-b930-ebb5c1c6f5fe",
+        "contactId": "diego",
+        "sender": "me",
+        "senderName": "Tú",
+        "text": "un audio",
+        "modality": "voz",
+        "transformed": {
+          "recipientMode": "ciego",
+          "modeLabel": "Adaptado para receptor ciego (Audio y LumiCube)",
+          "adaptedHeadline": "Guion claro para lectura por voz",
+          "adaptedText": "un audio.",
+          "audioScript": "Mensaje recibido: un audio.",
+          "signGloss": [],
+          "pictograms": [],
+          "tactileCue": "LumiCube: Pulsa Botón 3 (Cara Trasera) para escuchar o Botón 2 para responder por voz.",
+          "suggestedReplies": [
+            "Recibido, muchas gracias",
+            "Te respondo por voz ahora",
+            "¿Puedes darme más detalles?"
+          ],
+          "source": "local"
+        },
+        "createdAt": "2026-11-14T16:26:46.108Z"
+      },
+      {
+        "id": "m_97456464-6f84-4c3e-bbad-b19ea4a3de38",
+        "contactId": "diego",
+        "sender": "contact",
+        "senderName": "Diego (Modo Sordo)",
+        "text": "Recibí tu mensaje en formato visual y señas. ¡Muchas gracias!",
+        "modality": "texto",
+        "transformed": {
+          "recipientMode": "general",
+          "modeLabel": "Adaptado para receptor general (Texto y audio)",
+          "adaptedHeadline": "Mensaje claro en texto y audio",
+          "adaptedText": "Recibí tu mensaje en formato visual y señas. ¡Muchas gracias!",
+          "audioScript": "Recibí tu mensaje en formato visual y señas. ¡Muchas gracias!",
+          "signGloss": [
+            {
+              "token": "recibi",
+              "gloss": "RECIBI",
+              "cue": "Seña clara para \"recibi\" con expresión facial acorde."
+            },
+            {
+              "token": "tu",
+              "gloss": "TU",
+              "cue": "Seña clara para \"tu\" con expresión facial acorde."
+            },
+            {
+              "token": "mensaje",
+              "gloss": "MENSAJE",
+              "cue": "Seña clara para \"mensaje\" con expresión facial acorde."
+            },
+            {
+              "token": "formato",
+              "gloss": "FORMATO",
+              "cue": "Seña clara para \"formato\" con expresión facial acorde."
+            }
+          ],
+          "pictograms": [
+            {
+              "symbol": "💬",
+              "label": "RECIBI"
+            },
+            {
+              "symbol": "💬",
+              "label": "TU"
+            },
+            {
+              "symbol": "💬",
+              "label": "MENSAJE"
+            },
+            {
+              "symbol": "💬",
+              "label": "FORMATO"
+            }
+          ],
+          "tactileCue": "Disponible para lectura visual, audio y control LumiCube.",
+          "suggestedReplies": [
+            "¡Gracias!",
+            "Recibido perfectamente",
+            "Hablamos pronto"
+          ],
+          "source": "local"
+        },
+        "createdAt": "2026-11-14T16:26:46.359Z"
+      },
+      {
+        "id": "m_0f7cde01-7f0b-48e8-9e78-adf0fa1d5b18",
+        "contactId": "diego",
+        "sender": "me",
+        "senderName": "Tú",
+        "text": "una nota de voz",
+        "modality": "voz",
+        "transformed": {
+          "recipientMode": "ciego",
+          "modeLabel": "Adaptado para receptor ciego (Audio y LumiCube)",
+          "adaptedHeadline": "Guion claro para lectura por voz",
+          "adaptedText": "una nota de voz.",
+          "audioScript": "Mensaje recibido: una nota de voz.",
+          "signGloss": [],
+          "pictograms": [],
+          "tactileCue": "LumiCube: Pulsa Botón 3 (Cara Trasera) para escuchar o Botón 2 para responder por voz.",
+          "suggestedReplies": [
+            "Recibido, muchas gracias",
+            "Te respondo por voz ahora",
+            "¿Puedes darme más detalles?"
+          ],
+          "source": "local"
+        },
+        "createdAt": "2026-11-14T16:26:54.273Z"
+      },
+      {
+        "id": "m_a4552e1c-cd04-4b97-a5dc-e647be69a9d8",
+        "contactId": "diego",
+        "sender": "contact",
+        "senderName": "Diego (Modo Sordo)",
+        "text": "Recibí tu mensaje en formato visual y señas. ¡Muchas gracias!",
+        "modality": "texto",
+        "transformed": {
+          "recipientMode": "general",
+          "modeLabel": "Adaptado para receptor general (Texto y audio)",
+          "adaptedHeadline": "Mensaje claro en texto y audio",
+          "adaptedText": "Recibí tu mensaje en formato visual y señas. ¡Muchas gracias!",
+          "audioScript": "Recibí tu mensaje en formato visual y señas. ¡Muchas gracias!",
+          "signGloss": [
+            {
+              "token": "recibi",
+              "gloss": "RECIBI",
+              "cue": "Seña clara para \"recibi\" con expresión facial acorde."
+            },
+            {
+              "token": "tu",
+              "gloss": "TU",
+              "cue": "Seña clara para \"tu\" con expresión facial acorde."
+            },
+            {
+              "token": "mensaje",
+              "gloss": "MENSAJE",
+              "cue": "Seña clara para \"mensaje\" con expresión facial acorde."
+            },
+            {
+              "token": "formato",
+              "gloss": "FORMATO",
+              "cue": "Seña clara para \"formato\" con expresión facial acorde."
+            }
+          ],
+          "pictograms": [
+            {
+              "symbol": "💬",
+              "label": "RECIBI"
+            },
+            {
+              "symbol": "💬",
+              "label": "TU"
+            },
+            {
+              "symbol": "💬",
+              "label": "MENSAJE"
+            },
+            {
+              "symbol": "💬",
+              "label": "FORMATO"
+            }
+          ],
+          "tactileCue": "Disponible para lectura visual, audio y control LumiCube.",
+          "suggestedReplies": [
+            "¡Gracias!",
+            "Recibido perfectamente",
+            "Hablamos pronto"
+          ],
+          "source": "local"
+        },
+        "createdAt": "2026-11-14T16:26:54.523Z"
+      }
+    ]
+  },
+  "posts": [
+    {
+      "id": "p_d0281f45-140b-4a0e-a338-d4a4369a65f6",
+      "authorId": "u_b862884c-6999-479d-989e-4e56b3e6bdd7",
+      "authorName": "Elena",
+      "authorMode": "mudo",
+      "category": "comunidad",
+      "content": "Probando la comunidad accesible de Lumi",
+      "likes": 0,
+      "likedByUser": false,
+      "comments": [],
+      "createdAt": "2026-11-12T19:21:51.964Z"
+    },
+    {
+      "id": "p1",
+      "authorId": "seed-1",
+      "authorName": "Camila R.",
+      "authorMode": "ciego",
+      "category": "audio",
+      "content": "Hoy probé la navegación por voz para abrir Audiolibros y me encantó poder detener la lectura solo diciendo silencio. ¡Muy cómodo para usar sin mirar la pantalla!",
+      "altDescription": "Experiencia de navegación por voz en el modo Ciego",
+      "likes": 14,
+      "likedByUser": false,
+      "comments": [
+        {
+          "id": "c1",
+          "authorName": "Tomás V.",
+          "text": "A mí también me ayudó mucho combinarlo con los botones Anterior y Siguiente.",
+          "createdAt": "2026-11-12T09:30:00.000Z"
+        }
+      ],
+      "createdAt": "2026-11-12T09:10:00.000Z"
+    },
+    {
+      "id": "p2",
+      "authorId": "seed-2",
+      "authorName": "Diego M.",
+      "authorMode": "sordo",
+      "category": "senas",
+      "content": "Comparto un consejo: en el módulo de Lengua de señas pueden escribir cualquier frase cotidiana y ver paso a paso cómo posicionar las manos y la expresión facial.",
+      "altDescription": "Recomendación del diccionario y traductor visual de lengua de señas",
+      "likes": 19,
+      "likedByUser": false,
+      "comments": [],
+      "createdAt": "2026-11-12T08:45:00.000Z"
+    },
+    {
+      "id": "p3",
+      "authorId": "seed-3",
+      "authorName": "Valentina S.",
+      "authorMode": "mudo",
+      "category": "comunidad",
+      "content": "Uso el modo Mudo en cafés y trámites: escribo mi pedido con frases rápidas y Lumi lo lee en voz alta con claridad. Me da mucha autonomía en el día a día.",
+      "altDescription": "Uso de frases rápidas y voz Lumi en atención presencial",
+      "likes": 23,
+      "likedByUser": false,
+      "comments": [],
+      "createdAt": "2026-11-11T19:20:00.000Z"
+    },
+    {
+      "id": "p4",
+      "authorId": "seed-4",
+      "authorName": "Equipo Lumi",
+      "authorMode": "general",
+      "category": "consejos",
+      "content": "El futuro LumiCube integra 6 caras accesibles: micrófono frontal con IA, puntos Braille para grabar y pausar, botones amplios para navegar y pagos NFC por voz.",
+      "altDescription": "Resumen de las seis caras funcionales del Teléfono Cubo con Lumi",
+      "likes": 31,
+      "likedByUser": false,
+      "comments": [],
+      "createdAt": "2026-11-11T16:00:00.000Z"
+    }
+  ],
+  "likedPostsByUser": {},
+  "progressByUser": {
+    "guest": {
+      "cubo-de-luz": {
+        "bookId": "cubo-de-luz",
+        "chapterId": "cubo-cap-1",
+        "positionPercent": 50,
+        "updatedAt": "2026-11-14T18:51:27.056Z"
+      },
+      "manual-lumicube": {
+        "bookId": "manual-lumicube",
+        "chapterId": "manual-cap-3",
+        "positionPercent": 50,
+        "updatedAt": "2026-11-14T16:55:19.583Z"
+      },
+      "custom-1794675622501": {
+        "bookId": "custom-1794675622501",
+        "chapterId": "pdf-p-1",
+        "positionPercent": 50,
+        "updatedAt": "2026-11-14T17:22:34.635Z"
+      }
+    }
+  }
+}

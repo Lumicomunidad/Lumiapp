@@ -1,0 +1,60 @@
+{
+  "name": "Lumi — Comunicación Accesible",
+  "short_name": "Lumi",
+  "description": "Tu espacio de comunicación accesible: mensajes por voz y texto, red social inclusiva, traductor multimodal, lengua de señas, audiolibros y compañero LumiCube.",
+  "id": "/?source=pwa",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui", "window-controls-overlay"],
+  "orientation": "any",
+  "background_color": "#FFFFFF",
+  "theme_color": "#F5DF91",
+  "lang": "es",
+  "dir": "ltr",
+  "categories": ["accessibility", "utilities", "social", "communication"],
+  "icons": [
+    {
+      "src": "/assets/Lumi_logo_original_limpio_transparente.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/Lumi_logo_original_limpio_transparente.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Mensajes",
+      "short_name": "Mensajes",
+      "description": "Comunícate por escrito, voz o frases rápidas",
+      "url": "/?section=mensajes",
+      "icons": [{ "src": "/assets/Lumi_logo_original_limpio_transparente.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Traductor Accesible",
+      "short_name": "Traductor",
+      "description": "Traductor a lectura fácil, lengua de señas y pictogramas",
+      "url": "/?section=traductor",
+      "icons": [{ "src": "/assets/Lumi_logo_original_limpio_transparente.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Audiolibros",
+      "short_name": "Audiolibros",
+      "description": "Escucha historias y crónicas accesibles",
+      "url": "/?section=audiolibros",
+      "icons": [{ "src": "/assets/Lumi_logo_original_limpio_transparente.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "LumiCube",
+      "short_name": "LumiCube",
+      "description": "Simulador de los 9 botones táctiles del Teléfono Cubo",
+      "url": "/?section=lumicube",
+      "icons": [{ "src": "/assets/icon-192.svg", "sizes": "192x192" }]
+    }
+  ]
+}

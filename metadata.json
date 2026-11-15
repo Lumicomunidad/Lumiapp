@@ -1,0 +1,6 @@
+{
+  "name": "Lumi — Comunicación accesible y LumiCube",
+  "description": "Plataforma de comunicación inclusiva con modos por voz, visual y escrito, cuentas de usuario, traductor multimodal, lengua de señas, asistente Lumi, audiolibros y simulador de LumiCube.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
